@@ -1,0 +1,238 @@
+{\rtf1\fbidis\ansi\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset1 Segoe UI Symbol;}{\f2\fnil Calibri;}{\f3\fnil\fcharset1 Segoe UI Emoji;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang10 # \f1\u-10179?\u-8995?\f2  \f0 Pr\'e1ctica 1.1: Fundamentos de Python\par
+\par
+En esta pr\'e1ctica trabajar\'e1s con **tipos de datos b\'e1sicos**, **funciones**, **entrada/salida por consola**, **cadenas formateadas**, **manejo de errores**, **librer\'edas externas**, **argumentos desde la consola** y la creaci\'f3n de un **entorno virtual** con `requirements.txt`.\par
+\par
+---\par
+\par
+## \f1\u-10179?\u-8903?\f2  \f0 Ejercicio 1: Tipos de datos y entrada de usuario\par
+\par
+1. Pide al usuario su **nombre**, **edad** y **altura en metros**.\par
+2. Muestra un mensaje usando **f-string** con los datos ingresados.  \par
+   Ejemplo:\par
+   ```\par
+   Hola Ana, tienes 25 a\'f1os y mides 1.70 metros.\par
+   ```\par
+3. Muestra el **tipo de dato** de cada variable.\par
+\par
+_Pista r\'e1pida: usa `input()`, `int()` o `float()` seg\'fan necesites y `type()` para ver el tipo._\par
+\par
+---\par
+\par
+## \f1\u-10179?\u-8903?\f2  \f0 Ejercicio 2: Funciones b\'e1sicas\par
+\par
+1. Crea una funci\'f3n `saludar(nombre)` que reciba un nombre y devuelva un saludo:\par
+\par
+2. Crea una funci\'f3n `calcular_imc(peso, altura)` que devuelva el **IMC** usando la f\'f3rmula:\par
+\par
+3. Llama a estas funciones con los datos ingresados en el ejercicio 1 y muestra los resultados.\par
+\par
+---\par
+\par
+## \f1\u-10179?\u-8903?\f2  \f0 Ejercicio 3: Par\'e1metros con valores por defecto y \\*args\par
+\par
+1. Crea una funci\'f3n `presentar_persona(nombre="Usuario", edad=None, *aficiones)` que muestre un mensaje como:\par
+   ```\par
+   Ana tiene 25 a\'f1os y le gusta: leer, correr, viajar\par
+   ```\par
+2. Prueba la funci\'f3n con diferentes n\'fameros de aficiones.\par
+3. Dale un valor por defecto al par\'e1metro `nombre` para cuando no se pase ninguno.\par
+\par
+---\par
+\par
+## \f1\u-10179?\u-8903?\f2  \f0 Ejercicio 4: Manejo de errores\par
+\par
+1. Modifica el ejercicio 1 para que la **edad y altura** se pidan en un bucle que **repita hasta que se ingrese un n\'famero v\'e1lido**.\par
+2. Usa `try/except` para capturar errores si el usuario escribe algo que no sea un n\'famero int o float en cada caso.\par
+\par
+---\par
+\par
+## \f1\u-10179?\u-8903?\f2  \f0 Ejercicio 5: Librer\'eda externa\par
+\par
+1. Instala la librer\'eda **`emoji`** en tu entorno virtual.\par
+2. Muestra un mensaje con un emoji usando la librer\'eda.\par
+\par
+Ejemplo:\par
+\par
+```python\par
+import emoji\par
+\par
+print(emoji.emojize("\'a1Bienvenido! :smile:", language="alias"))\par
+```\par
+\par
+**Extensi\'f3n pr\'e1ctica:** integra `emoji` en la funci\'f3n `calcular_imc` para mostrar un emoji seg\'fan resultado (bajo peso, normal, sobrepeso).\par
+\par
+Ejemplo integrado:\par
+\par
+```python\par
+import emoji\par
+\par
+def calcular_imc_con_emoji(peso, altura):\par
+    imc = peso / (altura ** 2)\par
+    if imc < 18.5:\par
+        estado = "Bajo peso " + emoji.emojize(":warning:", language="alias")\par
+    elif imc < 25:\par
+        estado = "Normal " + emoji.emojize(":smile:", language="alias")\par
+    else:\par
+        estado = "Sobrepeso " + emoji.emojize(":exclamation:", language="alias")\par
+    return imc, estado\par
+```\par
+\par
+---\par
+\par
+## \f1\u-10179?\u-8903?\f2  \f0 Ejercicio 6: Entorno virtual y requirements\par
+\par
+1. Crea un **entorno virtual** en la carpeta de tu proyecto:\par
+   ```bash\par
+   python -m venv env\par
+   ```\par
+2. Act\'edvalo:\par
+   - Windows:\par
+     ```bash\par
+     .\\env\\Scripts\\activate\par
+     ```\par
+   - Linux/Mac:\par
+     ```bash\par
+     source env/bin/activate\par
+     ```\par
+3. Instala la librer\'eda externa (`emoji`) dentro del entorno:\par
+   ```bash\par
+   pip install emoji\par
+   ```\par
+4. Genera un `requirements.txt` con:\par
+   ```bash\par
+   pip freeze > requirements.txt\par
+   ```\par
+\par
+---\par
+\par
+## \f1\u-10179?\u-8903?\f2  \f0 Ejercicio 7:\par
+\par
+1. Pide al usuario una lista de n\'fameros separados por coma, por ejemplo:\par
+   ```\par
+   4,5,6,7\par
+   ```\par
+2. Convierte la entrada a **lista de enteros**.\par
+3. Calcula y muestra: **suma**, **promedio**, **m\'e1ximo** y **m\'ednimo** usando funciones.\par
+4. Usa f-strings para mostrar los resultados con formato:\par
+   ```\par
+   La suma es 22, el promedio es 5.5, el m\'e1ximo 7, el m\'ednimo 4\par
+   ```\par
+\par
+---\par
+\par
+## \f1\u-10179?\u-8903?\f2  \f0 Ejercicio 8: Argumentos desde la l\'ednea de comandos\par
+\par
+1. Crea un archivo `main.py` con el siguiente contenido:\par
+\par
+```python\par
+import sys\par
+\par
+def main():\par
+    # sys.argv es una lista con los argumentos de la l\'ednea de comandos\par
+    # El primer elemento (posici\'f3n 0) es siempre el nombre del archivo\par
+    print("Argumentos recibidos:", sys.argv)\par
+\par
+    # Si hay argumentos adicionales, los mostramos\par
+    if len(sys.argv) > 1:\par
+        nombre = sys.argv[1]\par
+        print(f"Hola, \{nombre\} \f1\u-10179?\u-9141?\f0 ")\par
+    else:\par
+        print("No se proporcion\'f3 ning\'fan argumento")\par
+\par
+if __name__ == "__main__":\par
+    main()\par
+```\par
+\par
+2. Ejecuci\'f3n desde consola:\par
+\par
+- Caso sin argumentos:\par
+\par
+  ```bash\par
+  python main.py\par
+  ```\par
+\par
+  Salida esperada:\par
+\par
+  ```\par
+  Argumentos recibidos: ['main.py']\par
+  No se proporcion\'f3 ning\'fan argumento\par
+  ```\par
+\par
+- Caso con argumento:\par
+  ```bash\par
+  python main.py Ana\par
+  ```\par
+  Salida esperada:\par
+  ```\par
+  Argumentos recibidos: ['main.py', 'Ana']\par
+  Hola, Ana \f1\u-10179?\u-9141?\f0\par
+  ```\par
+\par
+3. Extensi\'f3n: a\'f1ade m\'e1s argumentos (por ejemplo, edad y ciudad) y muestra un mensaje con todos ellos usando f-strings.\par
+\par
+---\par
+\par
+## \f1\u-10179?\u-8903?\f2  \f0 Ejercicio 9: Mini-calculadora por l\'ednea de comandos\par
+\par
+Vas a crear un programa que funcione como una **mini-calculadora** desde la consola.\par
+\par
+1. Crea un archivo `calculadora.py` que al ejecutarse acepte 3 argumentos, un n\'famero, un operador (+, \\*, / o -) y otro n\'famero.\par
+\par
+2. Si el n\'famero de argumentos es incorrecto o los argumentos no son del tipo que se espera debe mostrar error y una ayuda de c\'f3mo se usa\par
+\par
+3. Usa emojis en las salidas para que sea m\'e1s vistoso.\par
+\par
+### \f3\u9654?\u-497?\f2  \f0 Ejecuci\'f3n desde consola\par
+\par
+- Ejemplo correcto:\par
+\par
+  ```bash\par
+  python calculadora.py 5 + 3\par
+  ```\par
+\par
+  Salida:\par
+\par
+  ```\par
+  Resultado: 5.0 + 3.0 = 8.0\par
+  ```\par
+\par
+- Ejemplo con argumentos insuficientes:\par
+\par
+  ```bash\par
+  python calculadora.py 5 +\par
+  ```\par
+\par
+  Salida:\par
+\par
+  ```\par
+  Uso: python calculadora.py <num1> <operador> <num2>\par
+  Ejemplos:\par
+    python calculadora.py 5 + 3\par
+    python calculadora.py 10 * 4\par
+  ```\par
+\par
+- Ejemplo con operador inv\'e1lido:\par
+  ```bash\par
+  python calculadora.py 5 ^ 2\par
+  ```\par
+  Salida:\par
+  ```\par
+\f2   \f3\u9888?\u-497?\f2  \f0 Operador '^' no reconocido. Usa +, -, * o /.\par
+  ```\par
+\par
+## \f1\u-10180?\u-8273?\f2  \f0 Objetivos de la pr\'e1ctica\par
+\par
+- Refuerzo de **tipos de datos b\'e1sicos** (`str`, `int`, `float`).\par
+- Uso de **entrada y salida por consola** (`input()` y `print()`).\par
+- Uso de **f-strings** para formatear cadenas.\par
+- Creaci\'f3n y uso de **funciones** con par\'e1metros posicionales, por defecto y \\*args.\par
+- Manejo de errores con **try/except**.\par
+- Instalaci\'f3n y uso de **librer\'edas externas**.\par
+- Creaci\'f3n de **entornos virtuales** y archivo `requirements.txt`.\par
+- Lectura de **argumentos desde la l\'ednea de comandos** con `sys.argv`.\par
+\par
+---\par
+}
+ 
