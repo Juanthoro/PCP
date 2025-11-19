@@ -1,0 +1,21 @@
+nombre,edad,ciudad,email,fecha_registro
+ Ana  ,25,MADRID ,Ana@example.com,01/10/2024
+Luis,30,SEVILLA,Luis@example.com,
+Marta,28,VALENCIA,Marta@example.com,
+Pedro ,28,BARCELONA,Pedro@example.com,
+Lucía,22,MADRID,Lucía@example.com,03/05/2024
+Ana,25,MADRID,Ana@example.com,
+  Sofia,27,SEVILLA,Sofia@example.com,
+Miguel,29,SEVILLA,Miguel@example.com,06/01/2024
+Juan,28,MADRID,Juan@example.com,
+Laura,31,VALÉNCIA,Laura@example.com,07/10/2024
+Antonio,35, MADRID,Antonio@example.com,
+María,28,SEVILLA,María@example.com,
+Raúl,28,VALENCIA,Raúl@example.com,05/12/2024
+Eva ,28,BARCELONA,Eva@example.com,04/05/2024
+Daniel,33,MADRID,Daniel@example.com,
+Isabel,27,SEVILLA,Isabel@example.com,03/10/2024
+Alberto,40,VALENCIA,Alberto@example.com,
+ Carmen,28,VALÉNCIA,Carmen@example.com,07/01/2024
+Pablo,19,MADRID,Pablo@example.com,
+Teresa,25,SEVILLA ,Teresa@example.com,
