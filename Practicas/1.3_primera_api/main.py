@@ -16,7 +16,7 @@ def info():
 # Segundo endpoint
 @app.get("/asistencia")
 def asistencia(id: Optional[int] = Query(None)):
-
+# En los parámetros opcionales se podría hacer directamente id = None sin tener que importar la libreria Optional
     if (id is None):
         return "El parámetro adicional es id"
 
