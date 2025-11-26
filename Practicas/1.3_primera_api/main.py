@@ -23,14 +23,14 @@ def asistencia(id: Optional[int] = Query(None)):
     alumno = df[df["ID"] == id]
     row = alumno.iloc[0]
     return {
-        row["Nombre"] + " " + row["Apellidos"] + ": " + "Asistencia": row["Asistencia"]
+        row["Nombre"] + " " + row["Apellidos"] + ": " + "Asistencia ": row["Asistencia"]
     }
 
 
 # Tercer endpoint
 @app.get("/notas")
 def notas(id: Optional[int] = Query(None), nota: Optional[str] = Query(None)):
-
+# En los parámetros opcionales se podría hacer directamente id = None sin tener que importar la libreria Optional
     if (id is None) or (nota is None):
         return "Los parámetros opcionales son id y nota"
 
