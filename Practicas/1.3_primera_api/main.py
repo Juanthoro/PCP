@@ -3,7 +3,7 @@ from fastapi import FastAPI, Query
 from typing import Optional# Necesario para poder meter de manera opcional los parámetros
 
 # Cuidado al colocar el csv que la ubicación importa
-df = pd.read_csv("datos_alumnos.csv")
+df = pd.read_csv("datos_alumnos.csv", encoding="latin1")
 app = FastAPI(title="iesazarquiel")
 
 
