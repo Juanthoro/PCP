@@ -1,0 +1,6 @@
+GET https://dummyjson.com/products/1
+
+GET url HTTP/1.1
+
+GET https://dummyjson.com/products/search=?q=Laptop
+
