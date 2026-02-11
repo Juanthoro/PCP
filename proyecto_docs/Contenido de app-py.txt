@@ -1,0 +1,87 @@
+from os import getenv
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from dotenv import load_dotenv
+from pymongo import MongoClient
+from bson.objectid import ObjectId
+from flask_wtf import FlaskForm
+from wtforms import StringField, IntegerField, SubmitField
+from wtforms.validators import DataRequired, Email
+
+load_dotenv()
+
+#Creación de una instancia de la clase Flask
+app = Flask(__name__)
+
+client = MongoClient(getenv('MONGO_URI'))
+
+if "escuela" not in client.list_database_names():
+    db = client['escuela']
+    tabla = db['estudiantes']
+    tabla.insert_one({})
+else:
+    db = client['escuela']
+    tabla = db['estudiantes']
+
+@app.route('/', methods=['GET'])
+
+def home():
+    return(client.list_database_names())
+
+@app.route('/lista', methods=['GET'])
+def lista():
+    return (client.list_database_names())
+
+@app.route('/tabla', methods=['GET'])
+def tabla():
+    documentos = client.escuela.estudiantes.find()
+    listado=[]
+    for doc in documentos:
+        doc['_id'] = str(doc['_id']) 
+        listado.append(doc)
+    
+    # IMPORTANTE: El return debe ir FUERA del for, alineado con el 'for'
+    return jsonify(listado)
+
+if __name__ == '__main__':
+    app.run()
+	
+	
+	
+Creas un archivo llamado .env:
+
+MONGO_ROOT=root
+MONGO_PASS=pass123
+MONGO_URI=mongodb://root:pass123@localhost:27017/
+MONGO_URI_IN=mongodb://root:pass123@mongo:27017/
+MONGOEX_USER=mongoexpressuser
+MONGOEX_AUTH=true
+MONGOEX_PASSWORD=mongoexpresspass
+
+En el archivo docker-compose.yml:
+
+services:
+        mongo:
+            image: mongo
+            container_name: mongoDB
+            restart: always
+            #Agregamos el puerto para poder conectar python con MongoDB
+            ports:
+                - 27017:27017
+            environment:
+                MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT}
+                MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+            volumes:
+                - mongoData:/data/db
+        mongo-express:
+            image: mongo-express
+            container_name: mongoGUI
+            restart: always
+            ports:
+                - 8081:8081
+            environment:
+                ME_CONFIG_MONGODB_URL: ${MONGO_URI_IN}
+                ME_CONFIG_BASICAUTH_ENABLED: ${MONGOEX_AUTH}
+                ME_CONFIG_BASICAUTH_USERNAME: ${MONGOEX_USER}
+                ME_CONFIG_BASICAUTH_PASSWORD: ${MONGOEX_PASSWORD}
+    volumes:
+        mongoData:
